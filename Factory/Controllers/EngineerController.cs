@@ -24,6 +24,7 @@ namespace Factory.Controllers
       return View();
     }
 
+    [HttpPost]
     public ActionResult Create(Engineer engineer, int MachineId)
     {
       _db.Engineers.Add(engineer);
@@ -52,6 +53,58 @@ namespace Factory.Controllers
           return View(thisEngineer);
     }
 
-    
+    [HttpPost]
+    public ActionResult Edit(Engineer engineer, int MachineId)
+    {
+      if (MachineId != 0)
+      {
+        _db.EngineerMachine.Add(new EngineerMachine() {MachineId = MachineId, EngineerId = engineer.EngineerId});
+      }
+      _db.Entry(engineer).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult AddMachine(int Id)
+    {
+      var.thisEngineer = _db.Machines.FirstOrDefault(engineer => engineer.EngineerId == id);
+      ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineName");
+      return View(thisEngineer);
+    }
+
+    [HttpPost]
+    public ActionResult AddMachine(Engineer engineer, int MachineId)
+    {
+      if(MachineId != 0)
+      {
+        _db.EngineerMachine.Add(new EngineerMachine() {MachineId = MachineId, EngineerId = engineer.EngineerId});
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult Delete(int id)
+    {
+      var thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
+      return View(thisEngineer);
+    }
+
+    [HttpPost, ActionResult("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      var thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
+      _db.Engineers.Remove(thisEngineer);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public ActionResult DeleteMachine(int joinId)
+    {
+      var joinEntry = _db.EngineerMachine.FirstOrDefault(entry => entry.EngineerMachineId == JoinId);
+      _db.EngineerMachine.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
