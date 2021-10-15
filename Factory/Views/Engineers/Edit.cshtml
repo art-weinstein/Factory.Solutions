@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<h3>Edit this engineer: @Html.DisplayFor(model => model.EngineerName)</h3>
+<hr>
+
+@using(Html.BeginForm())
+{
+  <div class = "form-group">
+    @Html.HiddenFor(model => model.EngineerId)
+    <p>Machine @Html.LabelFor(model => model.EngineerName)
+    @Html.EditorFor(model => model.EngineerName, new {@class = "form-control"})</p>
+  </div>
+  <input type="submit" value = "Save" class = "btn btn-primary" />
+}
+<br>
+<p class="btn btn-dark">@Html.ActionLink("Back to engineer", "Index")</p>
+<p class="btn btn-dark">@Html.ActionLink("Home", "Index", "Home")</p>
