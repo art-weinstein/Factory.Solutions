@@ -1,0 +1,18 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<h3>Hire an engineer</h3>
+<hr>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.EngineerName)
+  @Html.TextBoxFor(model => model.EngineerName, new {@class = "form-control", @required = "required"})
+  <input type = "submit" value = "Hire new engineer" class="btn btn-dark"/>
+}
+
+<p class="btn btn-outline-dark">@Html.ActionLink("Show all engineers", "Index")</p>
+<p class="btn btn-outline-dark">@Html.ActionLink("Home", "Index", "Home")</p>
