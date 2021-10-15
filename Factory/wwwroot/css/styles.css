@@ -1,0 +1,9 @@
+body {
+  background-color: rgb(29, 20, 20);
+}
+
+h1, h2 {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 400;
+}
