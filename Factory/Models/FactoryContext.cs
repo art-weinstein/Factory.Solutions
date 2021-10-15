@@ -4,10 +4,10 @@ namespace Factory.Models
 {
   public class FactoryContext : DbContext
   {
-    public virtual Dbset<Machine> Machines { get; set; }
-    public Dbset<Engineer> Engineers { get; set; }
+    public virtual DbSet<Machine> Machines { get; set; }
+    public DbSet<Engineer> Engineers { get; set; }
     public FactoryContext(DbContextOptions options) : base(options){ }
-    protected override void onConfiguring(DbContextOptionsBuilder optionsBuilder)
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
       optionsBuilder.UseLazyLoadingProxies();
     }

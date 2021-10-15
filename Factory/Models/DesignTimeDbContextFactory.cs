@@ -5,9 +5,9 @@ using System.IO;
 
 namespace Factory.Models
 {
-  public class FactoryContextFactory : IdesignTimeDbContextFactory<FactoryContext>
+  public class FactoryContextFactory : IDesignTimeDbContextFactory<FactoryContext>
   {
-    FactoryContext IdesignTimeDbContextFactory<FactoryContext>.CreateDbContext(sting[] args)
+    FactoryContext IDesignTimeDbContextFactory<FactoryContext>.CreateDbContext(string[] args)
     {
       IConfigurationRoot configuration = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
