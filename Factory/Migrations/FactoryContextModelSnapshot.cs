@@ -22,7 +22,7 @@ namespace Factory.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("EngineerName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("EngineerId");
@@ -57,7 +57,7 @@ namespace Factory.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("MachineName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("MachineId");

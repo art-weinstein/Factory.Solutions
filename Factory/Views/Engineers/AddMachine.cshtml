@@ -7,10 +7,10 @@
 <h3>Add a machine</h3>
 <hr>
 
-<h4>Add a machine @Html.DisplayFor(model => model.Name) is licensed for: </h4>
+<h4>Add a machine @Html.DisplayFor(model => model.EngineerName) is licensed for: </h4>
 @using (Html.BeginForm())
 {
-  @Html.HidenFor(model => model.EngineerId)
+  @Html.HiddenFor(model => model.EngineerId)
   <div class="form-group">
     @Html.Label("Select machine")
     @Html.DropDownList("MachineId", null, new {@class = "form-control"})

@@ -65,9 +65,9 @@ namespace Factory.Controllers
       return RedirectToAction("Index");
     }
 
-    public ActionResult AddMachine(int Id)
+    public ActionResult AddMachine(int id)
     {
-      var.thisEngineer = _db.Machines.FirstOrDefault(engineer => engineer.EngineerId == id);
+      var thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
       ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineName");
       return View(thisEngineer);
     }
@@ -89,7 +89,7 @@ namespace Factory.Controllers
       return View(thisEngineer);
     }
 
-    [HttpPost, ActionResult("Delete")]
+    [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
       var thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
@@ -101,7 +101,7 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult DeleteMachine(int joinId)
     {
-      var joinEntry = _db.EngineerMachine.FirstOrDefault(entry => entry.EngineerMachineId == JoinId);
+      var joinEntry = _db.EngineerMachine.FirstOrDefault(entry => entry.EngineerMachineId == joinId);
       _db.EngineerMachine.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
